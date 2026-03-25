@@ -161,12 +161,16 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="mockup-screen-content" id="mockup-display" style="width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; padding: 0;">
           ${(() => {
             const firstItem = t.mockupFeature.items[0];
+            let iframeUrl = firstItem.iframeSrc || "";
+            if (iframeUrl.includes("watch?v=")) iframeUrl = iframeUrl.replace("watch?v=", "embed/").split("&")[0];
+            else if (iframeUrl.includes("youtu.be/")) iframeUrl = iframeUrl.replace("youtu.be/", "youtube.com/embed/").split("?")[0];
+            
             if (firstItem.iframeSrc) {
-              return `<iframe src="${firstItem.iframeSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:550px; border:none;"></iframe>`;
+              return `<iframe src="${iframeUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio:16/9; border:none; display:block;"></iframe>`;
             } else if (firstItem.imgSrc) {
-              return `<img src="${firstItem.imgSrc}" alt="${firstItem.title}" style="width:100%; height:550px; object-fit:cover; display:block; object-position: top center;">`;
+              return `<img src="${firstItem.imgSrc}" alt="${firstItem.title}" style="width:100%; aspect-ratio:16/9; object-fit:contain; background:#111a18; display:block;">`;
             } else {
-              return `<div style="padding: 40px; min-height:550px; display:flex; flex-direction:column; justify-content:center; align-items:center;"><span class="mockup-icon-lg">${firstItem.icon}</span><h3>${firstItem.title}</h3><p>${firstItem.desc}</p></div>`;
+              return `<div style="padding: 40px; aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; align-items:center;"><span class="mockup-icon-lg">${firstItem.icon}</span><h3>${firstItem.title}</h3><p>${firstItem.desc}</p></div>`;
             }
           })()}
         </div>
@@ -189,11 +193,15 @@ document.addEventListener("DOMContentLoaded", () => {
           display.offsetHeight; // trigger reflow
           display.style.animation = "fadeIn 0.4s ease forwards";
           
+          let iframeUrl = data.iframeSrc || "";
+          if (iframeUrl.includes("watch?v=")) iframeUrl = iframeUrl.replace("watch?v=", "embed/").split("&")[0];
+          else if (iframeUrl.includes("youtu.be/")) iframeUrl = iframeUrl.replace("youtu.be/", "youtube.com/embed/").split("?")[0];
+
           display.innerHTML = data.iframeSrc
-            ? `<iframe src="${data.iframeSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:550px; border:none;"></iframe>`
+            ? `<iframe src="${iframeUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio:16/9; border:none; display:block;"></iframe>`
             : data.imgSrc 
-              ? `<img src="${data.imgSrc}" alt="${data.title}" style="width:100%; height:550px; object-fit:cover; display:block; object-position: top center;">`
-              : `<div style="padding: 40px; min-height:550px; display:flex; flex-direction:column; justify-content:center; align-items:center;"><span class="mockup-icon-lg">${data.icon}</span><h3>${data.title}</h3><p>${data.desc}</p></div>`;
+              ? `<img src="${data.imgSrc}" alt="${data.title}" style="width:100%; aspect-ratio:16/9; object-fit:contain; background:#111a18; display:block;">`
+              : `<div style="padding: 40px; aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; align-items:center;"><span class="mockup-icon-lg">${data.icon}</span><h3>${data.title}</h3><p>${data.desc}</p></div>`;
         });
       });
     }
