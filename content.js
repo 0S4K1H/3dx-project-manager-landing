@@ -146,7 +146,7 @@ const pageData = {
       { id: "wbs", title: "Project Builder (WBS)", imgSrc: "WBS.png", desc: "Vista general de planificación y seguimiento de proyectos." },
       { id: "gantt", title: "Gantt & Kanban", imgSrc: "Gantt.png", desc: "Visualiza el progreso real contra la línea base en diagramas interactivos o tableros ágiles." },
       { id: "issues", title: "Route & Issue Management", imgSrc: "task.png", desc: "Asigna tareas y controla riesgos mediante rutas formales de aprobación 100% auditables." },
-      { id: "3dplay", title: "Visualización Inmersiva", iframeSrc: "https://www.youtube.com/embed/nZc_P_zE05I?autoplay=1&mute=1", desc: "Interactúa con modelos 3D y planos CAD directamente en el navegador sin instalar software pesados." }
+      { id: "3dplay", title: "Visualización Inmersiva", iframeSrc: "https://www.youtube.com/watch?v=owKFZ3en1S0", desc: "Interactúa con modelos 3D y planos CAD directamente en el navegador sin instalar software pesados." }
     ]
   },
 
