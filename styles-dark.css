@@ -1,0 +1,48 @@
+/* Versión mejorada con fondo más oscuro */
+body {
+  background-color: #0f172a; /* azul oscuro profesional */
+  color: #e5e7eb;
+  font-family: 'Manrope', sans-serif;
+}
+
+.topbar {
+  background-color: #020617;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+section {
+  padding: 60px 20px;
+}
+
+h1, h2, h3 {
+  color: #f1f5f9;
+}
+
+p {
+  color: #cbd5f5;
+}
+
+footer {
+  background-color: #020617;
+  color: #94a3b8;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Cards / elementos */
+.info-card, .cta-card, .form-card {
+  background-color: #1e293b;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Links */
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0ea5e9;
+}
